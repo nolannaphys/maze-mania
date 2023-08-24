@@ -1,0 +1,51 @@
+.bar {
+    background-color: rgb(54, 101, 255);
+}
+
+.title {
+    font-size: 75px;
+    text-align: left;
+    font-family: 'impact';
+    color: rgb(255, 255, 255);
+}
+
+.nav {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex; 
+    justify-content: space-around;
+}
+
+.nav-pills .nav-item .nav-link {
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #002fae;
+    color: #ffffff;
+  }
+
+  .nav-pills .nav-item .nav-link:hover {
+    background-color:navy;
+  }
+
+
+  @media screen and (max-width: 992px){
+    .nav-pills .nav-item .nav-link {
+        width: auto;
+    }
+  }
+
+  @media screen and (max-width: 768px){
+    .title {
+       display: flex;
+       justify-content: center;
+       padding-right: 0px;
+       font-size: 40px;
+    }
+
+    .nav-pills .nav-item .nav-link {
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        width: auto
+      }
+}
