@@ -1,9 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import '../components/Nav.css'
 
-import { Link, useLocation } from 'react-router-dom'
-import '../components/Nav.css'
-
 function Nav(){
     const currentPage = useLocation().pathname;
 
