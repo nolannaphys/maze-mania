@@ -5,14 +5,30 @@ const path = require('path');
 
 // create schemas -> typeDef and resolvers
 const { typeDefs, resolvers } = require('./schemas');
+const { contextTokenizer } = require('./utils/auth');
 const db = require('./config/connection');
 
 
 const PORT = process.env.PORT || 4445;
 const app = express();
+
+
+// ****** This is for apollo version 4 *****
+// Please use apollo 4 version and associated auth file in order to use the latest Apollo
+// Apollo plugin has been changed to use hooks in order to better control plugin access
+// If you want to use version 3 from class, do not copy this code
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  plugins: [
+    {
+      // hooks into Apollo Context for request and values
+      async requestDidStart(context) {
+        // goes to contextTokenizer
+        contextTokenizer(context);
+      },
+    },
+  ],
 });
 
 const startApolloServer = async () => {
