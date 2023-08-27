@@ -63,8 +63,8 @@ const resolvers = {
     },
     signUp: async (parent,{ name, email, password}, context) => {
       const user = await User.create({ name, email, password });
-      const token = auth.signToken(user);
-      return { token, user };
+      // const token = auth.signToken(user);
+      // return { token, user };
     },
     login: async (parent, {email, password}, context) => {
       // if email is not sent, this is an invalid request
@@ -81,10 +81,10 @@ const resolvers = {
           throw new Error('Error: Incorrect credentials');
         }
 
-        const token = auth.signToken(user);
-        // console.log(auth.signToken);
+        // const token = auth.signToken(user);
+        // // console.log(auth.signToken);
 
-        return { token, user };
+        // return { token, user };
       }
       throw new Error('Error: No user found with this email address');
     },
