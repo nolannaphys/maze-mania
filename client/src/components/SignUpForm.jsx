@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { MUTATION_LOGIN } from '../utils/mutations';
+import { MUTATION_SIGNUP } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/api"
-export default function LoginForm (props) {
+
+export default function SignUpForm (props) {
   const [formState, setFormState ] = useState({
+    name: '',
     email: '',
     password: ''
   });
@@ -16,7 +18,7 @@ export default function LoginForm (props) {
     email: ''
   });
 
-  const [login, { error }] = useMutation(MUTATION_LOGIN);
+  const [signUp, { error }] = useMutation(MUTATION_SIGNUP);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -36,19 +38,21 @@ export default function LoginForm (props) {
     setShowError(false);
     setShowSuccess(false);
 
+
+
     try{
-      const { data } = await login({
+      const { data } = await signUp({
         variables: {
           ...formState
         }
       });
+    Auth.login(data.signUp.token)
 
       console.log(data);
-      Auth.login(data.login.token)
-      // console.log(data?.login.token)
-      // console.log(data?.login.user);
+    //   console.log(data?.login.token)
+    //   console.log(data?.login.user);
       setShowSuccess(true);
-      // setUserData(data?.login.user);
+    //   setUserData(data?.login.user);
     }catch(err){
       console.error(err);
       setShowError(true);

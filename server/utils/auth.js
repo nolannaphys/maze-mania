@@ -1,17 +1,18 @@
 const tokenizer = require('jsonwebtoken');
 require('dotenv').config();
 
-const secret = process.env.TOKEN_SECRET;
-const expiration = process.env.TOKEN_EXPIRATION;
-
+// const secret = process.env.TOKEN_SECRET;
+// const expiration = process.env.TOKEN_EXPIRATION;
+const secret = "secret123"
+const expiration = "2h"
 
 // TOKEN_SECRET_CHECK
-if(process.env.TOKEN_SECRET && process.env.TOKEN_SECRET.length > 3){
-  console.log("VALID TOKEN_SECRET");
-}
-else{
-  console.log("MISSING TOKEN_SECRET");
-}
+// if(process.env.TOKEN_SECRET && process.env.TOKEN_SECRET.length > 3){
+//   console.log("VALID TOKEN_SECRET");
+// }
+// else{
+//   console.log("MISSING TOKEN_SECRET");
+// }
 
 module.exports = { 
   contextTokenizer: ({request: req, contextValue}) => {
