@@ -11,6 +11,7 @@ const typeDefs = `
     _id: ID!
     name: String
     email: String
+    password: String
   }
 
   type Matchup {
