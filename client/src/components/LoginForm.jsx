@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MUTATION_LOGIN } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
-
+import Auth from "../utils/api"
 export default function LoginForm (props) {
   const [formState, setFormState ] = useState({
     email: '',
@@ -44,10 +44,11 @@ export default function LoginForm (props) {
       });
 
       console.log(data);
-      console.log(data?.login.token)
-      console.log(data?.login.user);
+      Auth.login(data.login.token)
+      // console.log(data?.login.token)
+      // console.log(data?.login.user);
       setShowSuccess(true);
-      setUserData(data?.login.user);
+      // setUserData(data?.login.user);
     }catch(err){
       console.error(err);
       setShowError(true);
