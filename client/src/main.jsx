@@ -1,18 +1,16 @@
-import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import App from './App.jsx'
 import Error from './pages/Error'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Maze from './pages/Maze'
 import Profile from './pages/Profile'
-
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-
 
 const router = createBrowserRouter([
   {
@@ -29,8 +27,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
   <RouterProvider router={router} />
 )
