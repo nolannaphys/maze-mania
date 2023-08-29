@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MUTATION_SIGNUP } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/api"
+import Auth from "../utils/auth"
 
 export default function SignUpForm (props) {
   const [formState, setFormState ] = useState({

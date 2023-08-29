@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import {
   ApolloClient,
@@ -9,12 +7,11 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Message from './components/Message';
-import LoginForm from './components/LoginForm';
 import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 
 import LoginProvider from './utils/LoginContext';
-
+import Auth from './utils/auth';
 
 
 // Construct our main GraphQL API endpoint
@@ -25,7 +22,7 @@ const httpLink = createHttpLink({
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('user_token');
+  const token = Auth.getToken();
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -45,12 +42,19 @@ const client = new ApolloClient({
 function App() {
   const [count, setCount] = useState(0)
   // get token, if null, empty string will be the token
-  const token = localStorage.getItem('user_token') || '';
+  const token = Auth.getToken() || '';
+  // want to set the proper state from the beginning if we are initially logged in
+  const loggedIn = token.length > 0;
+  // declared apollo provider here, so we cannot run queries in this App component
+  // We create a LoginCheck component to do that work for us.
+  console.log(token);
 
   return (
     <ApolloProvider client={client}>
-      <LoginProvider token={token}>
-        <Outlet />
+      <LoginProvider token={token} loggedIn={loggedIn}>
+        <div className="container-fluid">
+          <Outlet />
+        </div>
       </LoginProvider>
       {/* <LoginForm />
       <Message />

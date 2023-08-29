@@ -1,6 +1,6 @@
 import './styles/Maze.css';
-import '../assets/key.png';
-import '../assets/home.png';
+import  keyLogo from '../assets/key.png';
+import  homeLogo from '../assets/home.png';
 
 function rand(max) {
     return Math.floor(Math.random() * max);
@@ -90,9 +90,9 @@ function rand(max) {
   
     function genMap() {
       mazeMap = new Array(height);
-      for (y = 0; y < height; y++) {
+      for (let y = 0; y < height; y++) {
         mazeMap[y] = new Array(width);
-        for (x = 0; x < width; ++x) {
+        for (let x = 0; x < width; ++x) {
           mazeMap[y][x] = {
             n: false,
             s: false,
@@ -496,8 +496,8 @@ function rand(max) {
     this.bindKeyDown();
   }
   
-  var mazeCanvas = document.getElementById("mazeCanvas");
-  var ctx = mazeCanvas.getContext("2d");
+  var mazeCanvas
+  var ctx
   var sprite;
   var finishSprite;
   var maze, draw, player;
@@ -506,6 +506,9 @@ function rand(max) {
   // sprite.src = 'media/sprite.png';
   
   window.onload = function() {
+    mazeCanvas = document.getElementById("mazeCanvas");
+    ctx = mazeCanvas.getContext("2d");
+
     let viewWidth = $("#view").width();
     let viewHeight = $("#view").height();
     if (viewHeight < viewWidth) {
@@ -530,7 +533,7 @@ function rand(max) {
     };
     sprite = new Image();
     sprite.src =
-      "./key.png" +
+      keyLogo +
       "?" +
       new Date().getTime();
     sprite.setAttribute("crossOrigin", " ");
@@ -542,7 +545,7 @@ function rand(max) {
     };
   
     finishSprite = new Image();
-    finishSprite.src = "./home.png"+
+    finishSprite.src = homeLogo+
     "?" +
     new Date().getTime();
     finishSprite.setAttribute("crossOrigin", " ");
@@ -588,41 +591,40 @@ function rand(max) {
     }
   }
 
-  //NOTE - Causing error in the app. Need to fix it.
-// export default function Maze() {
-//   return (
-//     <div id="page">
+export default function MyMaze() {
+  return (
+    <div id="page">
 
-//     <div id="Message-Container">
-//       <div id="message">
-//         <h1>Congratulations!</h1>
-//         <p>You are done.</p>
-//         <p id="moves"></p>
-//         <input id="okBtn" type="button" onclick="toggleVisibility('Message-Container')" value="Cool!" />
-//       </div>
-//     </div>
+    <div id="Message-Container">
+      <div id="message">
+        <h1>Congratulations!</h1>
+        <p>You are done.</p>
+        <p id="moves"></p>
+        <input id="okBtn" type="button" onclick="toggleVisibility('Message-Container')" value="Cool!" />
+      </div>
+    </div>
 
-//     {/* <br> */}
-//     <div id="menu">
-//       <div class="custom-select">
-//         <select id="diffSelect">
-//                   <option value="10">Easy</option>
-//                   <option value="15">Medium</option>
-//                   <option value="25">Hard</option>
-//                   <option value="38">Extreme</option>                                      
-//               </select>
-//       </div>
-//       <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
-//     </div>
+    {/* <br> */}
+    <div id="menu">
+      <div className="custom-select">
+        <select id="diffSelect">
+                  <option value="10">Easy</option>
+                  <option value="15">Medium</option>
+                  <option value="25">Hard</option>
+                  <option value="38">Extreme</option>                                      
+              </select>
+      </div>
+      <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
+    </div>
 
-//     <div id="view">
-//       <div id="mazeContainer">
-//         <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
-//       </div>
-//     </div>
+    <div id="view">
+      <div id="mazeContainer">
+        <canvas id="mazeCanvas" className="border" height="1100" width="1100"></canvas>
+      </div>
+    </div>
 
-//     <p id="instructions">Use arrow keys to move the key to the house!</p>
+    <p id="instructions">Use arrow keys to move the key to the house!</p>
 
-//   </div>
-//   );
-// }
+  </div>
+  );
+}
