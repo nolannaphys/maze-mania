@@ -1,40 +1,41 @@
-import { React } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import SignUpForm from './components/SignUpForm';
 
 import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Maze from './pages/Maze';
-import Profile from './pages/Profile';
+import MyMaze from './pages/Maze';
+// import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    error: <Error />,
     children: [
-      { 
-        path: '/', 
-        element: <Home /> 
+      {
+        index: true,
+        element: <Home />
       },
-      { 
-        path: '/login', 
-        element: <Login /> 
+      {
+        path: '/login',
+        element: <Login />
       },
-      { 
-        path: '/maze', 
-        element: <Maze /> 
+      {
+        path: '/signup',
+        element: <SignUpForm />
       },
-      { 
-        path: '/profile', 
-        element: <Profile /> 
+      {
+        path: '/maze',
+        element: <MyMaze />
       },
-      { 
-        path: '*', 
-        element: <Error /> 
+      {
+        path: '/profile',
+        element: <Profile />
       },
     ],
   }

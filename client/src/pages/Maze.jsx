@@ -588,41 +588,40 @@ function rand(max) {
     }
   }
 
-  //NOTE - Causing error in the app. Need to fix it.
-// export default function Maze() {
-//   return (
-//     <div id="page">
+export default function MyMaze() {
+  return (
+    <div id="page">
 
-//     <div id="Message-Container">
-//       <div id="message">
-//         <h1>Congratulations!</h1>
-//         <p>You are done.</p>
-//         <p id="moves"></p>
-//         <input id="okBtn" type="button" onclick="toggleVisibility('Message-Container')" value="Cool!" />
-//       </div>
-//     </div>
+    <div id="Message-Container">
+      <div id="message">
+        <h1>Congratulations!</h1>
+        <p>You are done.</p>
+        <p id="moves"></p>
+        <input id="okBtn" type="button" onclick="toggleVisibility('Message-Container')" value="Cool!" />
+      </div>
+    </div>
 
-//     {/* <br> */}
-//     <div id="menu">
-//       <div class="custom-select">
-//         <select id="diffSelect">
-//                   <option value="10">Easy</option>
-//                   <option value="15">Medium</option>
-//                   <option value="25">Hard</option>
-//                   <option value="38">Extreme</option>                                      
-//               </select>
-//       </div>
-//       <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
-//     </div>
+    {/* <br> */}
+    <div id="menu">
+      <div class="custom-select">
+        <select id="diffSelect">
+                  <option value="10">Easy</option>
+                  <option value="15">Medium</option>
+                  <option value="25">Hard</option>
+                  <option value="38">Extreme</option>                                      
+              </select>
+      </div>
+      <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
+    </div>
 
-//     <div id="view">
-//       <div id="mazeContainer">
-//         <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
-//       </div>
-//     </div>
+    <div id="view">
+      <div id="mazeContainer">
+        <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+      </div>
+    </div>
 
-//     <p id="instructions">Use arrow keys to move the key to the house!</p>
+    <p id="instructions">Use arrow keys to move the key to the house!</p>
 
-//   </div>
-//   );
-// }
+  </div>
+  );
+}
