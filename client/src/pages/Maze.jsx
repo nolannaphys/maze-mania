@@ -1,6 +1,6 @@
 import './styles/Maze.css';
-import '../assets/key.png';
-import '../assets/home.png';
+import  keyLogo from '../assets/key.png';
+import  homeLogo from '../assets/home.png';
 
 function rand(max) {
     return Math.floor(Math.random() * max);
@@ -90,9 +90,9 @@ function rand(max) {
   
     function genMap() {
       mazeMap = new Array(height);
-      for (y = 0; y < height; y++) {
+      for (let y = 0; y < height; y++) {
         mazeMap[y] = new Array(width);
-        for (x = 0; x < width; ++x) {
+        for (let x = 0; x < width; ++x) {
           mazeMap[y][x] = {
             n: false,
             s: false,
@@ -496,8 +496,8 @@ function rand(max) {
     this.bindKeyDown();
   }
   
-  var mazeCanvas = document.getElementById("mazeCanvas");
-  var ctx = mazeCanvas.getContext("2d");
+  var mazeCanvas
+  var ctx
   var sprite;
   var finishSprite;
   var maze, draw, player;
@@ -506,6 +506,9 @@ function rand(max) {
   // sprite.src = 'media/sprite.png';
   
   window.onload = function() {
+    mazeCanvas = document.getElementById("mazeCanvas");
+    ctx = mazeCanvas.getContext("2d");
+
     let viewWidth = $("#view").width();
     let viewHeight = $("#view").height();
     if (viewHeight < viewWidth) {
@@ -530,7 +533,7 @@ function rand(max) {
     };
     sprite = new Image();
     sprite.src =
-      "./key.png" +
+      keyLogo +
       "?" +
       new Date().getTime();
     sprite.setAttribute("crossOrigin", " ");
@@ -542,7 +545,7 @@ function rand(max) {
     };
   
     finishSprite = new Image();
-    finishSprite.src = "./home.png"+
+    finishSprite.src = homeLogo+
     "?" +
     new Date().getTime();
     finishSprite.setAttribute("crossOrigin", " ");
@@ -603,7 +606,7 @@ export default function MyMaze() {
 
     {/* <br> */}
     <div id="menu">
-      <div class="custom-select">
+      <div className="custom-select">
         <select id="diffSelect">
                   <option value="10">Easy</option>
                   <option value="15">Medium</option>
@@ -616,7 +619,7 @@ export default function MyMaze() {
 
     <div id="view">
       <div id="mazeContainer">
-        <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+        <canvas id="mazeCanvas" className="border" height="1100" width="1100"></canvas>
       </div>
     </div>
 

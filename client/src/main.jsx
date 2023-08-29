@@ -33,10 +33,10 @@ const router = createBrowserRouter([
         path: '/maze',
         element: <MyMaze />
       },
-      {
-        path: '/profile',
-        element: <Profile />
-      },
+      // {
+      //   path: '/profile',
+      //   element: <Profile />
+      // },
     ],
   }
 ]);
